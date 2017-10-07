@@ -3,6 +3,7 @@ package com.example.databasetest;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -30,13 +31,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public MyDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
         mContext = context;
+        Log.i("MyDatabaseHelper", "MyDatabaseHelper: instance");
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         sqLiteDatabase.execSQL(CREATE_BOOK);
         sqLiteDatabase.execSQL(CREATE_CATEGORY);
-        Toast.makeText(mContext, "Create success", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(mContext, "Create success", Toast.LENGTH_SHORT).show();
+        Log.i("MyDatabaseHelper", "onCreate: database create success");
     }
 
     @Override
